@@ -1,0 +1,22 @@
+{
+  "name": "suchithra-product-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Suchithra R's Product / APM portfolio and independent case studies.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs",
+    "check": "node scripts/check.mjs",
+    "test:browser": "node scripts/browser-check.mjs",
+    "assets:fonts": "node scripts/fetch-fonts.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "playwright-core": "^1.63.0"
+  }
+}

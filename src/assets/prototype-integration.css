@@ -1,0 +1,9 @@
+.prototype-return {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-block: 8px;
+  color: #28584b;
+  font-size: 14px;
+  text-underline-offset: 4px;
+}

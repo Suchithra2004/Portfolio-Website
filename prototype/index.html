@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ef">
+  <title>Reducing Repeat Driver Cancellations | Product Concept Prototype</title>
+  <meta name="description" content="An interactive product concept for driver cancellation recovery, reason-specific interventions, and marketplace health.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to prototype</a>
+  <div class="site-shell">
+    <header class="masthead">
+      <div class="identity"><span class="identity-mark" aria-hidden="true">↗</span><span>Mobility concept <small>Product case study</small></span></div>
+      <a class="report-link" href="../output/pdf/Reducing_Repeat_Driver_Cancellations_Case_Study.pdf" target="_blank" rel="noopener">Read case study <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="main">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> INTERACTIVE PRODUCT CONCEPT · SUCHITHRA R</div>
+        <h1 id="page-title">Reducing Repeat<br><em>Driver Cancellations</em></h1>
+        <p class="intro-copy">A matched ride should stay on track. Explore how reason-specific driver interventions, priority rematching, and a dedicated spiral metric could help a marketplace recover when it does not.</p>
+        <div class="intro-note"><span class="note-icon" aria-hidden="true">i</span><span>Concept prototype. Names, trip details, and dashboard scenarios are illustrative, not platform data.</span></div>
+      </section>
+
+      <nav class="tabs" aria-label="Prototype views" role="tablist">
+        <button class="tab active" id="tab-rider" role="tab" aria-selected="true" aria-controls="panel-rider" tabindex="0" data-tab="rider"><span class="tab-num">01</span> Rider recovery</button>
+        <button class="tab" id="tab-driver" role="tab" aria-selected="false" aria-controls="panel-driver" tabindex="-1" data-tab="driver"><span class="tab-num">02</span> Driver decision</button>
+        <button class="tab" id="tab-ops" role="tab" aria-selected="false" aria-controls="panel-ops" tabindex="-1" data-tab="ops"><span class="tab-num">03</span> Ops view</button>
+      </nav>
+
+      <section class="panel active" id="panel-rider" role="tabpanel" aria-labelledby="tab-rider">
+        <div class="workspace">
+          <div class="story">
+            <span class="section-kicker">RIDER EXPERIENCE / 01</span>
+            <h2>Recover the moment<br>trust is at risk.</h2>
+            <p>When a driver cancels after match, the rider sees what happened and moves into priority rematching. The experience shows a range for the next match instead of a precise promise the product cannot guarantee.</p>
+            <ol class="story-steps" id="rider-steps">
+              <li class="current" data-step="matched"><span>01</span><div><strong>Matched</strong><small>Driver and trip details are clear.</small></div></li>
+              <li data-step="cancelled"><span>02</span><div><strong>Cancellation</strong><small>Plain language acknowledges the disruption.</small></div></li>
+              <li data-step="rematching"><span>03</span><div><strong>Priority rematch</strong><small>Recovery status and an ETA range.</small></div></li>
+              <li data-step="recovered"><span>04</span><div><strong>New match</strong><small>The rider can continue or replay.</small></div></li>
+            </ol>
+            <div class="decision-note"><span>PRODUCT DECISION</span><p>Keep the rider in the request and prioritize the next matching pass after a driver cancellation.</p></div>
+          </div>
+
+          <div class="device-wrap">
+            <div class="device" aria-label="Interactive rider phone prototype">
+              <div class="device-top"><span>9:41</span><span class="device-signals" aria-hidden="true">▮▮▮  ◕</span></div>
+              <div class="app-header"><span class="app-wordmark">Ride status</span><span class="tiny-pill">DEMO</span></div>
+              <div class="map" aria-hidden="true"><div class="map-road road-one"></div><div class="map-road road-two"></div><div class="map-road road-three"></div><div class="map-park"></div><span class="map-pin pickup">A</span><span class="map-pin dropoff">B</span><span class="map-car">↗</span><span class="map-label">Illustrative route</span></div>
+              <div class="phone-content" id="rider-content" aria-live="polite"></div>
+              <div class="phone-footer"><span>●</span><span>Trip</span><span>Activity</span><span>Account</span></div>
+            </div>
+            <span class="device-caption">Tap through the recovery flow</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-driver" role="tabpanel" aria-labelledby="tab-driver" hidden>
+        <div class="workspace">
+          <div class="story">
+            <span class="section-kicker">DRIVER EXPERIENCE / 02</span>
+            <h2>Respond to the<br>reason, not just the tap.</h2>
+            <p>An incoming trip makes estimated earnings and the applicable fare floor visible. If the driver starts to cancel, the next message responds to their selected reason.</p>
+            <div class="reason-key"><span class="reason-key-title">TRY EVERY REASON</span><div><span>Low fare</span><span>Wrong direction</span><span>Traffic / pickup ETA</span><span>Other</span></div></div>
+            <div class="decision-note"><span>PRODUCT DECISION</span><p>Use a relevant, optional nudge before confirmation. The driver can still cancel; the product should never trap them in a trip.</p></div>
+          </div>
+          <div class="device-wrap">
+            <div class="device driver-device" aria-label="Interactive driver phone prototype">
+              <div class="device-top"><span>9:41</span><span class="device-signals" aria-hidden="true">▮▮▮  ◕</span></div>
+              <div class="app-header"><span class="app-wordmark">Driver trips</span><span class="online-pill"><span></span> Online</span></div>
+              <div class="driver-map" aria-hidden="true"><div class="route-line"></div><span class="route-dot dot-a"></span><span class="route-dot dot-b"></span><span class="route-label label-a">Pickup</span><span class="route-label label-b">Drop-off</span></div>
+              <div class="phone-content" id="driver-content" aria-live="polite"></div>
+              <div class="phone-footer"><span>●</span><span>Trips</span><span>Earnings</span><span>Account</span></div>
+            </div>
+            <span class="device-caption">Select a reason to see its nudge</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-ops" role="tabpanel" aria-labelledby="tab-ops" hidden>
+        <div class="ops-head"><div><span class="section-kicker">MARKETPLACE HEALTH / 03</span><h2>See the spiral,<br>then test the recovery.</h2><p>The dashboard separates funnel health from repeated cancellation exposure so a pilot can be judged on both rider recovery and marketplace guardrails.</p></div><div class="data-label"><span class="label-dot"></span><strong>Illustrative prototype data</strong><small>Concept values and shapes only. No live telemetry.</small></div></div>
+        <div class="ops-dashboard">
+          <div class="dashboard-bar"><div><span class="dashboard-title">Marketplace overview</span><small>Metric definitions + concept visuals</small></div><span class="dashboard-chip">ILLUSTRATIVE PROTOTYPE DATA</span></div>
+          <div class="metric-grid" aria-label="Marketplace metric definitions">
+            <article class="metric-card"><span>01 / MATCH RATE</span><strong>Requests → matched</strong><small>Protect overall matching while testing recovery.</small></article>
+            <article class="metric-card"><span>02 / DRIVER-ACCEPT RATE*</span><strong>Matched → trip started</strong><small>Post-match progression, with no driver cancellation.</small></article>
+            <article class="metric-card"><span>03 / COMPLETION RATE</span><strong>Started → completed</strong><small>Watch for downstream trip failures.</small></article>
+            <article class="metric-card"><span>04 / RIDER RETENTION</span><strong>7 / 30-day return</strong><small>Compare cohorts by cancellation exposure.</small></article>
+            <article class="metric-card accent-card"><span>05 / SPIRAL EXPOSURE RATE</span><strong>2+ cancellations</strong><small>Share of requests with two or more driver cancellations before completion or abandonment.</small></article>
+          </div>
+          <p class="metric-footnote">*The source report calls this “Driver-Accept Rate”; the operational definition is post-match progression to trip start.</p>
+          <div class="chart-grid">
+            <article class="chart-card retention-card"><div class="chart-heading"><div><span>RIDER OUTCOME</span><h3>7-day return by cancellation count</h3></div><span class="chart-tag">SOURCE ILLUSTRATION</span></div><p>Illustrative cohort values from the case study. They show a possible pattern, not measured retention or causation.</p><div class="bar-chart" role="img" aria-label="Illustrative 7-day return: zero driver cancellations 68 percent, one cancellation 51 percent, two or more cancellations 34 percent"><div class="bar-row"><span>0 cancellations</span><div class="bar-track"><i style="--bar:68%"></i></div><strong>68%</strong></div><div class="bar-row"><span>1 cancellation</span><div class="bar-track"><i style="--bar:51%"></i></div><strong>51%</strong></div><div class="bar-row"><span>2+ cancellations</span><div class="bar-track"><i style="--bar:34%"></i></div><strong>34%</strong></div></div></article>
+            <article class="chart-card trend-card"><div class="chart-heading"><div><span>PILOT READOUT</span><h3>Spiral Exposure Rate over time</h3></div><span class="chart-tag">CONCEPTUAL TREND</span></div><p>Illustrative direction only. Pilot impact would require actual request cohorts and a valid control.</p><div class="trend-graphic" role="img" aria-label="Conceptual line showing spiral exposure before and after a marked pilot launch, with a downward trend after launch and no numeric scale"><div class="pilot-rule"><span>Pilot launch</span></div><svg viewBox="0 0 520 180" preserveAspectRatio="none" aria-hidden="true"><path class="gridline" d="M0 35 H520 M0 90 H520 M0 145 H520"/><path class="trend-line" d="M8 64 C45 73 64 55 96 70 S151 63 192 76 S237 64 260 75 S300 83 326 105 S380 112 410 125 S466 132 512 146"/></svg><div class="trend-axis"><span>Before pilot</span><span>After pilot</span></div></div><small class="chart-caveat">No measured effect size or actual timeline is implied.</small></article>
+          </div>
+          <article class="reason-card"><div><span>DIAGNOSTIC VIEW</span><h3>Cancellation reason breakdown</h3><p>Track reason-coded cancellations by cohort and window. The source provides categories but no validated share for each one.</p></div><div class="reason-list"><span>Low fare</span><span>Wrong direction</span><span>Traffic / pickup ETA</span><span>Rider no-show risk</span><small>Distribution pending real reason-code telemetry</small></div></article>
+          <div class="ops-foot"><span>LEARNING LOOP</span><p>Validate reason capture → measure exposure and guardrails → compare pilot cohorts → adjust the intervention.</p></div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><span>Reducing Repeat Driver Cancellations</span><span>Suchithra R · APM portfolio case study</span></footer>
+  </div>
+</body>
+</html>

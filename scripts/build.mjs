@@ -14,7 +14,7 @@ export async function build() {
   const reportDirectory = resolve(output, 'assets/reports');
   await mkdir(reportDirectory, { recursive: true });
   const reports = [
-    ['Suchithra_R_Resume_Sales_CS.pdf', 'suchithra-r-resume.pdf'],
+    ['Suchithra_R_APM_Resume.pdf', 'suchithra-r-resume.pdf'],
     ['ai_visibility_audit_apm_case_study_suchithra_r.pdf', 'ai-visibility-audit.pdf'],
     ['output/pdf/Reducing_Repeat_Driver_Cancellations_Case_Study.pdf', 'driver-cancellations.pdf'],
     ['Suchithra_R_Demo-to-Payment_Dropoff_Case_Study (1).pdf', 'demo-to-payment.pdf'],

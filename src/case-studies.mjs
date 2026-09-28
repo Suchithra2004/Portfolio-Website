@@ -1,7 +1,9 @@
+import { paymentStudy } from './payment-study.mjs';
 import { dataTable as table, note, recoveryFigure, auditFigure, funnelFigure, shoppingFigure } from './components.mjs';
 
 // Reader copy is condensed from the supplied PDFs. Numerical inputs retain their evidence labels.
 export const caseStudies = {
+  'payment-reliability': paymentStudy,
   'driver-cancellations': {
     discipline: 'Marketplace recovery',
     boundary: 'A product concept with illustrative assumptions. No production telemetry, interviews, or measured pilot outcomes are claimed.',

@@ -19,6 +19,7 @@ export async function build() {
     ['output/pdf/Reducing_Repeat_Driver_Cancellations_Case_Study.pdf', 'driver-cancellations.pdf'],
     ['Suchithra_R_Demo-to-Payment_Dropoff_Case_Study (1).pdf', 'demo-to-payment.pdf'],
     ['Suchithra_R_Myntra_AI_Shopping_Assistant_Report (1).pdf', 'myntra-shopping-assistant.pdf'],
+    ['Suchithra_R_Payment_Reliability_Case_Study.pdf', 'payment-reliability.pdf'],
   ];
   for (const [source, name] of reports) await copyFile(resolve(root, source), resolve(reportDirectory, name));
   await writeFile(resolve(output, 'index.html'), homePage());
@@ -37,7 +38,7 @@ export async function build() {
   await writeFile(resolve(output, '404.html'), document({
     title: 'Page not found — Suchithra R',
     description: 'Return to Suchithra R’s Product / APM portfolio.',
-    content: '<main class="container not-found" id="main"><p class="eyebrow">404 / Page not found</p><h1>Let’s get you back to the work.</h1><p>This page could not be found. The four case studies are on the homepage.</p><a class="button" href="/#work">View Product Work →</a></main>',
+    content: '<main class="container not-found" id="main"><p class="eyebrow">404 / Page not found</p><h1>Let’s get you back to the work.</h1><p>This page could not be found. The five case studies are on the homepage.</p><a class="button" href="/#work">View Product Work →</a></main>',
   }));
   console.log(`Built homepage, ${projects.length} case-study readers, prototype, and ${reports.length} PDFs → dist/`);
 }

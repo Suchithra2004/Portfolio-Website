@@ -1,6 +1,6 @@
 # Suchithra R — Product / APM portfolio
 
-A static, editorial portfolio implementing the approved [design specification](design/PORTFOLIO_DESIGN_SPEC.md). Four independent case studies sit alongside accurately labeled customer and commercial experience. Concept metrics, assumptions, and proposed outcomes remain visibly distinguished from professional achievements.
+A static, editorial portfolio implementing the approved [design specification](design/PORTFOLIO_DESIGN_SPEC.md). Five independent case studies sit alongside accurately labeled customer and commercial experience. Concept metrics, assumptions, and proposed outcomes remain visibly distinguished from professional achievements.
 
 ## Run locally
 
@@ -28,6 +28,7 @@ Production output is generated in `dist/`. Preview uses port 4173, or the `PORT`
 | `/work/ai-visibility-audit/` | AI Visibility Audit | 14 pages |
 | `/work/demo-to-payment/` | Demo → Payment Drop-off | 11 pages |
 | `/work/myntra-shopping-assistant/` | Myntra Personal Shopping Assistant | 11 pages |
+| `/work/payment-reliability/` | Payments stuck on “Processing” | 13 pages |
 | `/prototype/` | Interactive cancellation concept | Cancellation report |
 
 `404.html` provides a useful missing-page response. Readers are native HTML; PDFs are optional linked artifacts.
@@ -40,6 +41,8 @@ src/
   home.mjs             Homepage sections
   case-studies.mjs     Source-grounded reader content
   reader.mjs           Shared case-study reading layout
+  payment-study.mjs    Payment reliability content and illustrative assumptions
+  payment-figures.mjs  Static HTML/CSS payment diagrams and concept wireframes
   assets/              Tokens/CSS, small menu script, fonts, actual UI crop
 prototype/             Existing standalone interactive concept
 scripts/               Build, local servers, asset capture, validation
@@ -49,7 +52,7 @@ dist/                  Generated static site (ignored by Git)
 .qa/                   Generated browser evidence (ignored by Git)
 ```
 
-Edit `src/`, not `dist/`. The build copies the supplied PDFs and links them using readable filenames. It does not modify their contents. The unrelated Payment Reliability report remains in the source repository and is not included as a fifth portfolio project.
+Edit `src/`, not `dist/`. The build copies the supplied PDFs and links them using readable filenames. It does not modify their contents. Payment Reliability is the fifth project; its diagrams and six concept wireframes use HTML/CSS, with the original 13-page PDF available as an optional download.
 
 ## Validate
 

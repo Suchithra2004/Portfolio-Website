@@ -13,7 +13,7 @@ async function walk(directory) {
   }
 }
 await walk(root);
-assert.equal(projects.length, 4);
+assert.equal(projects.length, 5);
 for (const font of ['inter', 'newsreader']) {
   const bytes = await readFile(resolve(root, `assets/fonts/${font}-latin.woff2`));
   assert.equal(bytes.subarray(0, 4).toString(), 'wOF2', `Real WOFF2: ${font}`);

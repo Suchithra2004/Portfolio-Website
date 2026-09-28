@@ -1,3 +1,5 @@
+import { paymentFigure } from './payment-figures.mjs';
+
 export const projects = [
   {
     slug: 'driver-cancellations', number: '01', category: 'Marketplace · Recovery & trust',
@@ -38,6 +40,20 @@ export const projects = [
     skills: ['Journey mapping', 'Product scoping', 'Prioritization', 'UX flows', 'Experiment design'],
     decision: 'Start with alerts and organization before expanding personalization.',
     pdf: 'myntra-shopping-assistant.pdf', pages: 11,
+  },
+  {
+    slug: 'payment-reliability', number: '05', category: 'Fintech · Payments & Reliability',
+    title: 'Payments stuck on “Processing”',
+    description: 'How could a credit-first UPI app reduce confusion, duplicate payments, and support pressure when payments get stuck?',
+    summary: 'A product case study on clearer pending payments, automated recovery, and reliability signals across a UPI stack the app does not fully control.',
+    subtitle: 'Restoring trust in a credit-first UPI app by fixing what users see, do and get back when a payment hangs.',
+    seoDescription: 'A fintech product case study on reducing confusion, duplicate payments, and support pressure when UPI payments get stuck on Processing.',
+    contribution: 'Framed the pending-payment problem, mapped failure points and user reactions, defined reliability metrics, proposed recovery and trust interventions, prioritized with RICE, and designed experiments.',
+    status: 'Independent product case study · illustrative assumptions',
+    date: 'September 2026',
+    skills: ['Problem framing', 'Fintech / UPI', 'Reliability', 'Metrics', 'RICE prioritization', 'Experiment design', 'UX flows'],
+    decision: 'The goal is not “never pending.” It is “never confusing.”',
+    pdf: 'payment-reliability.pdf', pages: 13,
   },
 ];
 
@@ -134,7 +150,7 @@ export function shoppingFigure() {
   </figure>`;
 }
 
-export const figures = { 'driver-cancellations': recoveryFigure, 'ai-visibility-audit': auditFigure, 'demo-to-payment': funnelFigure, 'myntra-shopping-assistant': shoppingFigure };
+export const figures = { 'driver-cancellations': recoveryFigure, 'ai-visibility-audit': auditFigure, 'demo-to-payment': funnelFigure, 'myntra-shopping-assistant': shoppingFigure, 'payment-reliability': paymentFigure };
 
 export function dataTable(caption, headings, rows) {
   return `<table class="data-table" role="table"><caption>${caption}</caption><thead role="rowgroup"><tr role="row">${headings.map(heading => `<th scope="col" role="columnheader">${heading}</th>`).join('')}</tr></thead><tbody role="rowgroup">${rows.map(row => `<tr role="row">${row.map((cell, index) => index === 0 ? `<th scope="row" role="rowheader">${cell}</th>` : `<td role="cell"><span class="cell-label" aria-hidden="true">${headings[index]}</span>${cell}</td>`).join('')}</tr>`).join('')}</tbody></table>`;

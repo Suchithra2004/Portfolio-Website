@@ -19,7 +19,7 @@ try {
   for (const width of [1440, 768, 320]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('http://localhost:4173/');
-    for (const selector of ['.project-primary', '.project-secondary', '.supporting-projects', '.experience-section']) {
+    for (const selector of ['.project-primary', '#project-ai-visibility-audit', '#project-payment-reliability', '.supporting-projects', '.experience-section']) {
       const element = page.locator(selector);
       if (await element.count()) await element.screenshot({ path: `.qa/detail-${selector.slice(1)}-${width}.png`, style: captureStyle });
     }

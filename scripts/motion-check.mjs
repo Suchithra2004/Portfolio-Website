@@ -25,10 +25,10 @@ try {
   await page.waitForFunction(() => getComputedStyle(document.querySelector('.hero-actions .button')).transform !== 'none');
   checks.push('Pointer hover activates button lift');
 
-  await page.locator('.project-secondary').evaluate(e => scrollTo({ top: e.offsetTop - 120, behavior: 'instant' }));
+  await page.locator('#project-ai-visibility-audit').evaluate(e => scrollTo({ top: e.offsetTop - 120, behavior: 'instant' }));
   await page.waitForFunction(() => document.querySelector('.project-secondary').getAnimations().some(a => a.effect.getTiming().duration === 560));
-  await page.locator('.project-secondary h3 a').focus();
-  assert.equal(await page.locator('.project-secondary').evaluate(e => e.getAnimations({ subtree: true }).length), 0);
+  await page.locator('#project-ai-visibility-audit h3 a').focus();
+  assert.equal(await page.locator('#project-ai-visibility-audit').evaluate(e => e.getAnimations({ subtree: true }).length), 0);
   assert.ok(await page.locator('.site-header').evaluate(e => Number(e.style.getPropertyValue('--reading-progress')) > 0));
   checks.push('Scroll reveal runs; keyboard focus cancels it; reading progress follows position');
 

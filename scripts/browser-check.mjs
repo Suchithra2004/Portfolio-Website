@@ -41,7 +41,7 @@ try {
       results.layouts.push({ route, width, scrollWidth: layout.scrollWidth, h1: layout.h1 });
       if (layout.scrollWidth > width) results.errors.push(`Overflow ${route} at ${width}: ${layout.scrollWidth}`);
       assert.equal(layout.h1, 1);
-      if (width === 320) for (const caption of await page.locator('.data-table caption').all()) {
+      if (width === 320) for (const caption of await page.locator('.data-table caption:visible').all()) {
         assert.ok((await caption.boundingBox()).width >= 200, `Readable mobile caption: ${route}`);
       }
       if (width === 1440 || width === 320) {
@@ -78,6 +78,33 @@ try {
   assert.equal(await page.locator('details').evaluate(e => e.open), true);
   results.interactions.push('Skip link, mobile menu keyboard/open/Escape/return focus/select, visible focus, reduced motion, experience disclosure');
 
+  // Follow the new card and the existing circular project navigation.
+  await page.locator('#project-payment-reliability .project-actions a').click();
+  assert.ok(page.url().endsWith('/work/payment-reliability/'));
+  assert.equal(await page.title(), 'Payments stuck on “Processing” | Suchithra R');
+  assert.match(await page.locator('meta[name="description"]').getAttribute('content'), /fintech product case study/);
+  for (const width of [1440, 768, 320]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const disclosure of await page.locator('.payment-disclosure').all()) {
+      if (!await disclosure.evaluate(e => e.open)) await disclosure.locator('summary').click();
+      assert.ok(await disclosure.locator('.data-table').isVisible());
+    }
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Expanded payment detail fits at ${width}`);
+    for (const caption of await page.locator('.data-table caption').all()) {
+      assert.ok((await caption.boundingBox()).width >= 200, `Expanded caption readable at ${width}`);
+    }
+    const audit = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
+    results.accessibility.push({ route: '/work/payment-reliability/#expanded', width, violations: audit.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => ({ target: n.target, summary: n.failureSummary })) })) });
+  }
+  await page.locator('.next-project h2 a').click();
+  assert.ok(page.url().endsWith('/work/driver-cancellations/'));
+  await page.goto(base + '/work/myntra-shopping-assistant/');
+  await page.locator('.next-project h2 a').click();
+  assert.ok(page.url().endsWith('/work/payment-reliability/'));
+  await page.locator('.case-back').click();
+  assert.equal(new URL(page.url()).hash, '#work');
+  results.interactions.push('Fifth card, payment metadata, expandable tables at three widths, Myntra → Payments → Driver navigation, back to Product Work');
+
   await page.goto(base + '/prototype/');
   async function auditState(name) {
     const audit = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
@@ -109,7 +136,7 @@ try {
   results.accessibility.push({ route: '/prototype/#ops', width: 390, violations: opsAudit.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => ({ target: n.target, summary: n.failureSummary })) })) });
   results.interactions.push('Prototype: four rider transitions, four driver reasons × both outcomes, replay, keyboard tabs, ops panel');
 
-  for (const route of routes.slice(0, 5)) {
+  for (const route of routes.filter(route => route !== '/prototype/')) {
     await page.goto(base + route);
     await page.evaluate(() => document.fonts.ready);
     await page.addStyleTag({ content: 'html { font-size: 200%; }' });
@@ -121,7 +148,7 @@ try {
   const noJS = await browser.newPage({ javaScriptEnabled: false, viewport: { width: 320, height: 900 } });
   await noJS.goto(base);
   assert.ok(await noJS.locator('.primary-nav').isVisible());
-  assert.equal(await noJS.locator('.project').count(), 4);
+  assert.equal(await noJS.locator('.project').count(), projects.length);
   await noJS.close();
   results.interactions.push('No-JavaScript homepage content and navigation');
   await writeFile('.qa/browser-results.json', JSON.stringify(results, null, 2));

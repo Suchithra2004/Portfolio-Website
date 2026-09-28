@@ -2,7 +2,7 @@ import { document, projects, figures, projectUrl, actions, arrow } from './compo
 
 function projectCard(project, variant) {
   return `<article class="project project-${variant}" id="project-${project.slug}" aria-labelledby="title-${project.slug}">
-    <div class="project-intro"><p class="eyebrow">${project.number} <span class="eyebrow-divider">/</span> ${project.category}</p><h3 id="title-${project.slug}"><a href="${projectUrl(project)}">${project.title}</a></h3><p class="project-description">${project.description}</p><p class="project-status">${project.status}.</p></div>
+    <div class="project-intro"><p class="eyebrow">${project.number} <span class="eyebrow-divider">/</span> ${project.category}</p><h3 id="title-${project.slug}"><a href="${projectUrl(project)}">${project.title}</a></h3><p class="project-description">${project.description}</p>${project.summary ? `<p class="project-status">${project.summary}</p>` : ''}<p class="project-status">${project.status}.</p></div>
     ${figures[project.slug]()}
     <div class="project-outro"><p class="contribution"><span class="small-label">My contribution</span>${project.contribution}</p><p class="project-skills">${project.skills.join(' · ')}</p>${actions(project)}</div>
   </article>`;
@@ -12,7 +12,7 @@ export function homePage() {
   return document({
     home: true,
     title: 'Suchithra R — Product / APM Portfolio',
-    description: 'Customer-facing professional moving into Product. Explore Suchithra R’s case studies in marketplace recovery, AI visibility, shopping, and conversion.',
+    description: 'Customer-facing professional moving into Product. Explore Suchithra R’s case studies in marketplace recovery, AI visibility, shopping, conversion, and payment reliability.',
     content: `<main id="main" tabindex="-1">
       <section class="hero container" aria-labelledby="hero-title">
         <div class="hero-copy"><p class="eyebrow">Suchithra R · Product / APM portfolio</p><h1 id="hero-title">Product thinking, grounded in <em>customer conversations.</em></h1><p class="hero-support">I’m Suchithra, a customer-facing professional at Airtribe moving into Product. My case studies explore problem framing, prioritization, metrics, and experiment design across customer and business problems.</p><div class="hero-actions"><a class="button" href="#work">View Product Work ${arrow()}</a><a class="text-link" href="#experience">My Experience</a></div></div>
@@ -20,10 +20,11 @@ export function homePage() {
       </section>
 
       <section class="work-section container" id="work" tabindex="-1" aria-labelledby="work-title">
-        <div class="section-heading"><div><p class="eyebrow">Selected work / 01—04</p><h2 id="work-title">Selected product work</h2></div><p>Four case studies on understanding a problem, choosing where to act, and defining what to learn next.</p></div>
+        <div class="section-heading"><div><p class="eyebrow">Selected work / 01—05</p><h2 id="work-title">Selected product work</h2></div><p>Five case studies on understanding a problem, choosing where to act, and defining what to learn next.</p></div>
         ${projectCard(projects[0], 'primary')}
         ${projectCard(projects[1], 'secondary')}
         <div class="supporting-projects">${projectCard(projects[2], 'supporting')}${projectCard(projects[3], 'supporting')}</div>
+        ${projectCard(projects[4], 'secondary')}
       </section>
 
       <section class="about-section section-space container" id="about" tabindex="-1" aria-labelledby="about-title">

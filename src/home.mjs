@@ -1,4 +1,4 @@
-import { document, projects, figures, projectUrl, actions, arrow } from './components.mjs';
+﻿import { document, projects, figures, projectUrl, actions, arrow } from './components.mjs';
 
 function projectCard(project, variant) {
   return `<article class="project project-${variant}" id="project-${project.slug}" aria-labelledby="title-${project.slug}">
@@ -45,7 +45,7 @@ export function homePage() {
 
       <section class="education-section container" aria-labelledby="education-title"><div><p class="eyebrow">Education & learning</p><h2 id="education-title">An engineering foundation.</h2><h3>B.Tech, Electronics and Communication Engineering</h3><p>Amrita Vishwa Vidyapeetham · Chennai · 2021–2025</p></div><div class="education-learning"><span class="small-label">Relevant learning</span><p>Data Structures and Algorithms using Python</p><span class="small-label">Additional certifications</span><p>PCB Design · PLC Programming · ADAS</p></div></section>
 
-      <section class="contact-section container" id="contact" tabindex="-1" aria-labelledby="contact-title"><div><p class="eyebrow">Start a conversation</p><h2 id="contact-title">Let’s talk about your<br>next product problem.</h2><p>I’m exploring APM and Product opportunities where customer understanding, commercial judgment, and structured problem-solving matter.</p><div class="contact-actions"><a class="button" href="mailto:suchi2004rajesh@yahoo.com">Email Suchithra ${arrow()}</a><a class="text-link" href="/assets/reports/suchithra-r-resume.pdf">View Resume <span class="file-label">PDF</span> ${arrow(true)}</a></div></div><div class="contact-address"><a href="mailto:suchi2004rajesh@yahoo.com">suchi2004rajesh@yahoo.com</a><p>Bangalore, India</p></div></section>
+      <section class="contact-section container" id="contact" tabindex="-1" aria-labelledby="contact-title"><div><p class="eyebrow">Start a conversation</p><h2 id="contact-title">Let’s talk about your<br>next product problem.</h2><p>I’m exploring APM and Product opportunities where customer understanding, commercial judgment, and structured problem-solving matter.</p><div class="contact-actions"><a class="button" href="mailto:suchi2004rajesh@yahoo.com">Email Suchithra ${arrow()}</a><a class="text-link" href="/assets/reports/suchithra-r-resume.pdf">View Resume <span class="file-label">PDF</span> ${arrow(true)}</a><a class="text-link" href="https://www.linkedin.com/in/suchithra-r-57998a221/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in new tab)">LinkedIn ${arrow(true)}</a></div></div><div class="contact-address"><a href="mailto:suchi2004rajesh@yahoo.com">suchi2004rajesh@yahoo.com</a><p>Bangalore, India</p></div></section>
     </main>`,
   });
 }
